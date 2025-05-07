@@ -367,6 +367,7 @@ public class Window extends javax.swing.JFrame {
         // Verifica se a corda arrebenta ou não
         cordaArrebentou = isArrebentar(tracaoMax, tracaoEsq, tracaoDir);
         
+        // Mostra os resultados no TextArea
         mostrarRes(txtRes, respostas, cordaArrebentou);
         
         
@@ -560,7 +561,17 @@ public class Window extends javax.swing.JFrame {
     
     // Adiciona as resposta no Text Area
     private static void mostrarRes(JTextArea txtArea, Double[] respostas, boolean estorouCorda) {
-        txtArea.setText("Aceleração: " + String.format("%.2f", respostas[0]));
+        txtArea.setText("");
+        
+        String res = "Aceleração: " + String.format("%.2f", respostas[0]) + "m/s^2" + 
+                     "\nTração da corda da Esquerda: " + String.format("%.2f", respostas[1]) + "N" + 
+                     "\nTração da corda da Direita: " + String.format("%.2f", respostas[2]) + "N";
+        
+        if(estorouCorda)
+            res += "\nA corda irá arrebentar! Pois a tração superou a tensão máxima da corda.";
+        
+        
+        txtArea.setText(res);
     }
     
 }
