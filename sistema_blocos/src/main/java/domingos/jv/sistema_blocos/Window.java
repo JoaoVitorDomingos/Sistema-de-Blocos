@@ -338,28 +338,37 @@ public class Window extends javax.swing.JFrame {
         double massaB = Double.parseDouble(inputB.getText());
         double massaC = Double.parseDouble(inputC.getText());
         double tracaoMax = Double.parseDouble(inputCorda.getText());
+        boolean cordaArrebentou;
         
         Double[] respostas = new Double[3];
         
         // Checa qual tipo de calculo ira ser feito
         if(radioNone.isSelected()) {
             // Faz o calculo para 3 blocos
-            System.out.println("Corda nao cortada");
+            //System.out.println("Corda nao cortada");
             respostas = calcular(massaA, massaB, massaC);
             
         } else if(radioEsquerda.isSelected()) {
             // Realiza o calculo para quando a corda da esquerda esta cortada
-            System.out.println("Corda da Esquerda Cortada");
+            //System.out.println("Corda da Esquerda Cortada");
             respostas = calcular(massaC, massaB, radioEsquerda.getText());
             
         } else if(radioDireita.isSelected()) {
             // Realiza o calculo para quando a corda da direita esta cortada
-            System.out.println("Corda da Direita Cortada");
+            //System.out.println("Corda da Direita Cortada");
             respostas = calcular(massaA, massaB, radioDireita.getText());
         }
+        /*
         for(int i = 0; i < 3; i++) {
             System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
-        }
+        } */
+        
+        // Verifica se a corda arrebenta ou não
+        cordaArrebentou = isArrebentar(tracaoMax, tracaoEsq, tracaoDir);
+        
+        
+        
+        
         
     }//GEN-LAST:event_btnCalcularActionPerformed
 
@@ -538,5 +547,14 @@ public class Window extends javax.swing.JFrame {
         
     }
 
-
+    // Checa se a corda irá arrebentar
+    private static boolean isArrebentar(double tensaoMax, double tracaoEsq, double tracaoDir) {
+        
+        if(tracaoEsq > tensaoMax || tracaoDir > tensaoMax) {
+            return true;
+        }
+        
+        return false;
+    }
+    
 }
