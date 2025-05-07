@@ -325,7 +325,14 @@ public class Window extends javax.swing.JFrame {
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
         
         JTextField[] inputs = {inputA, inputB, inputC, inputCorda};
-        verificarPreenchimento(inputs);
+        
+        if(!isPreenchido(inputs))
+            return;
+        
+        if(!isValido(inputs))
+            return;
+        
+        
         
     }//GEN-LAST:event_btnCalcularActionPerformed
 
@@ -390,22 +397,62 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextArea txtRes;
     // End of variables declaration//GEN-END:variables
 
-    private static void verificarPreenchimento(JTextField[] inputs) {
+    // Verifica se os inputs estão preenchidos
+    private static boolean isPreenchido(JTextField[] inputs) {
         String txtInput;
         String msg = "Preencha todos os campos!!!";
-        String titulo = "Erro!";
+        String titulo = "Erro de preenchimento!";
         
         for (JTextField input : inputs) {
             txtInput = input.getText();
-            System.out.println("Input " + input.getName() + ": " + txtInput);
+            //System.out.println("Input " + input.getName() + ": " + txtInput);
             
             if(txtInput.isEmpty()) {
-                System.out.println("Preencha todos os campos!!!");
+                //System.out.println("Preencha todos os campos!!!");
                 
                 JOptionPane.showMessageDialog(null, msg, titulo, JOptionPane.ERROR_MESSAGE);
-                return;
+                return false;
             }
         }
+        
+        return true;
     }
 
+    // Verifica se os dados digitados são válidos
+    private static boolean isValido(JTextField[] inputs) {
+        
+        String titulo = "Dados inválidos!";
+        String msg = "Por favor, digite apenas numeros positivos!";
+        double dado;
+        
+        for (JTextField input : inputs) {
+            try{
+                dado = Double.parseDouble(input.getText());
+                
+                System.out.println("Dado " + input.getName() + ": " + dado);
+                
+                if(dado <= 0) {
+                    System.out.println("Numero negativo");
+                    JOptionPane.showMessageDialog(null, msg, titulo, JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
+                if(input.getName() == "inputCorda" && dado < 10) {
+                    System.out.println("Numero invalido da corda");
+                    String msgCorda = "O valor minimo da tensão máxima da corda é 10N";
+                    String tituloCorda = "Valor inválido da Corda";
+                    JOptionPane.showMessageDialog(null, msgCorda, tituloCorda, JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
+            } catch(NumberFormatException ex) {
+                System.out.println("Nao eh numero!");
+                JOptionPane.showMessageDialog(null, msg, titulo, JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
 }
