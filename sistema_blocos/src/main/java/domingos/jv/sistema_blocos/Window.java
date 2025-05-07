@@ -346,16 +346,19 @@ public class Window extends javax.swing.JFrame {
             // Faz o calculo para 3 blocos
             System.out.println("Corda nao cortada");
             respostas = calcular(massaA, massaB, massaC);
-            for(int i = 0; i < 3; i++) {
-                System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
-            }
+            
         } else if(radioEsquerda.isSelected()) {
             // Realiza o calculo para quando a corda da esquerda esta cortada
             System.out.println("Corda da Esquerda Cortada");
-            respostas = calcular(massaB, massaC);
-            for(int i = 0; i < 3; i++) {
-                System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
-            }
+            respostas = calcular(massaC, massaB, radioEsquerda.getText());
+            
+        } else if(radioDireita.isSelected()) {
+            // Realiza o calculo para quando a corda da direita esta cortada
+            System.out.println("Corda da Direita Cortada");
+            respostas = calcular(massaA, massaB, radioDireita.getText());
+        }
+        for(int i = 0; i < 3; i++) {
+            System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
         }
         
     }//GEN-LAST:event_btnCalcularActionPerformed
@@ -503,18 +506,37 @@ public class Window extends javax.swing.JFrame {
     }
     
     // Realiza os calculos quando corta a corda de esquerda
-    private static Double[] calcular(double massaB, double massaC) {
+    private static Double[] calcular(double massaPendurado, double outraMassa, String cordaCortada) {
         
         Double[] respostas = new Double[3];
+        System.out.println("Funcao: " + cordaCortada);
         
-        aceleracao = (massaC * gravidade) / (massaB + massaC);
-        respostas[0] = aceleracao;
+        if(cordaCortada == "Esquerda") {
+            System.out.println("Entrou esqeurda");
+            aceleracao = (massaPendurado * gravidade) / (outraMassa + massaPendurado);
+            respostas[0] = aceleracao;
+
+            respostas[1] = 0.0;
+
+            tracaoDir = outraMassa * aceleracao;
+            respostas[2] = tracaoDir;
+
+            return respostas;
+            
+        } else{
+            System.out.println("Entrou direita");
+            aceleracao = (massaPendurado * gravidade) / (outraMassa + massaPendurado);
+            respostas[0] = -aceleracao;
+            
+            tracaoEsq = -outraMassa * aceleracao;
+            respostas[1] = tracaoEsq;
+            
+            respostas[2] = 0.0;
+            
+            return respostas;
+        }
         
-        respostas[1] = 0.0;
-        
-        tracaoDir = massaB * aceleracao;
-        respostas[2] = tracaoDir;
-        
-        return respostas;
     }
+
+
 }
