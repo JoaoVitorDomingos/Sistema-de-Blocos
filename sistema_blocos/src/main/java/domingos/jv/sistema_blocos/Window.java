@@ -326,13 +326,28 @@ public class Window extends javax.swing.JFrame {
         
         JTextField[] inputs = {inputA, inputB, inputC, inputCorda};
         
+        // Realiza os verificamentos
         if(!isPreenchido(inputs))
             return;
         
         if(!isValido(inputs))
             return;
         
+        // Transforma os dados em double
+        double massaA = Double.parseDouble(inputA.getText());
+        double massaB = Double.parseDouble(inputB.getText());
+        double massaC = Double.parseDouble(inputC.getText());
+        double tracaoMax = Double.parseDouble(inputCorda.getText());
         
+        Double[] respostas = new Double[3];
+        
+        if(radioNone.isSelected()) {
+            System.out.println("Corda nao cortada");
+            respostas = calcular(massaA, massaB, massaC);
+            for(int i = 0; i < 3; i++) {
+                System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
+            }
+        }
         
     }//GEN-LAST:event_btnCalcularActionPerformed
 
@@ -397,6 +412,12 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JTextArea txtRes;
     // End of variables declaration//GEN-END:variables
 
+    // Declaracao das variaveis para o calculo
+    private static final double gravidade = 9.8;
+    private static double aceleracao;
+    private static double tracaoEsq;
+    private static double tracaoDir;
+    
     // Verifica se os inputs estão preenchidos
     private static boolean isPreenchido(JTextField[] inputs) {
         String txtInput;
@@ -429,16 +450,16 @@ public class Window extends javax.swing.JFrame {
             try{
                 dado = Double.parseDouble(input.getText());
                 
-                System.out.println("Dado " + input.getName() + ": " + dado);
+                //System.out.println("Dado " + input.getName() + ": " + dado);
                 
                 if(dado <= 0) {
-                    System.out.println("Numero negativo");
+                    //System.out.println("Numero negativo");
                     JOptionPane.showMessageDialog(null, msg, titulo, JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
                 
                 if(input.getName() == "inputCorda" && dado < 10) {
-                    System.out.println("Numero invalido da corda");
+                    //System.out.println("Numero invalido da corda");
                     String msgCorda = "O valor minimo da tensão máxima da corda é 10N";
                     String tituloCorda = "Valor inválido da Corda";
                     JOptionPane.showMessageDialog(null, msgCorda, tituloCorda, JOptionPane.ERROR_MESSAGE);
@@ -446,13 +467,30 @@ public class Window extends javax.swing.JFrame {
                 }
                 
             } catch(NumberFormatException ex) {
-                System.out.println("Nao eh numero!");
+                //System.out.println("Nao eh numero!");
                 JOptionPane.showMessageDialog(null, msg, titulo, JOptionPane.ERROR_MESSAGE);
                 return false;
             }
         }
         
         return true;
+    }
+    
+    // Realiza os calculos para quando tem 3 blocos
+    private static Double[] calcular(Double massaA, Double massaB, Double massaC) {
+        
+        Double[] respostas = new Double[3];
+        
+        aceleracao = ((massaC - massaA) * gravidade) / (massaA + massaB + massaC);
+        respostas[0] = aceleracao;
+        
+        tracaoEsq = (massaA * aceleracao) + (massaA * gravidade);
+        respostas[1] = tracaoEsq;
+        
+        tracaoDir = (massaC * -aceleracao) + (massaC * gravidade);
+        respostas[2] = tracaoDir;
+        
+        return respostas;
     }
     
 }
