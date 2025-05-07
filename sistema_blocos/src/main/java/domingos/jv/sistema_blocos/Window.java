@@ -341,9 +341,18 @@ public class Window extends javax.swing.JFrame {
         
         Double[] respostas = new Double[3];
         
+        // Checa qual tipo de calculo ira ser feito
         if(radioNone.isSelected()) {
+            // Faz o calculo para 3 blocos
             System.out.println("Corda nao cortada");
             respostas = calcular(massaA, massaB, massaC);
+            for(int i = 0; i < 3; i++) {
+                System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
+            }
+        } else if(radioEsquerda.isSelected()) {
+            // Realiza o calculo para quando a corda da esquerda esta cortada
+            System.out.println("Corda da Esquerda Cortada");
+            respostas = calcular(massaB, massaC);
             for(int i = 0; i < 3; i++) {
                 System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
             }
@@ -477,7 +486,7 @@ public class Window extends javax.swing.JFrame {
     }
     
     // Realiza os calculos para quando tem 3 blocos
-    private static Double[] calcular(Double massaA, Double massaB, Double massaC) {
+    private static Double[] calcular(double massaA, double massaB, double massaC) {
         
         Double[] respostas = new Double[3];
         
@@ -493,4 +502,19 @@ public class Window extends javax.swing.JFrame {
         return respostas;
     }
     
+    // Realiza os calculos quando corta a corda de esquerda
+    private static Double[] calcular(double massaB, double massaC) {
+        
+        Double[] respostas = new Double[3];
+        
+        aceleracao = (massaC * gravidade) / (massaB + massaC);
+        respostas[0] = aceleracao;
+        
+        respostas[1] = 0.0;
+        
+        tracaoDir = massaB * aceleracao;
+        respostas[2] = tracaoDir;
+        
+        return respostas;
+    }
 }
