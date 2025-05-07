@@ -1,6 +1,7 @@
 package domingos.jv.sistema_blocos;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class Window extends javax.swing.JFrame {
@@ -366,7 +367,7 @@ public class Window extends javax.swing.JFrame {
         // Verifica se a corda arrebenta ou não
         cordaArrebentou = isArrebentar(tracaoMax, tracaoEsq, tracaoDir);
         
-        
+        mostrarRes(txtRes, respostas, cordaArrebentou);
         
         
         
@@ -555,6 +556,11 @@ public class Window extends javax.swing.JFrame {
         }
         
         return false;
+    }
+    
+    // Adiciona as resposta no Text Area
+    private static void mostrarRes(JTextArea txtArea, Double[] respostas, boolean estorouCorda) {
+        txtArea.setText("Aceleração: " + String.format("%.2f", respostas[0]));
     }
     
 }
