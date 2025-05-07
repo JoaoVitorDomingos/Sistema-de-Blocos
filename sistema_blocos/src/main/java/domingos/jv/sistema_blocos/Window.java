@@ -1,5 +1,8 @@
 package domingos.jv.sistema_blocos;
 
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 public class Window extends javax.swing.JFrame {
 
     /**
@@ -58,6 +61,11 @@ public class Window extends javax.swing.JFrame {
         btnCalcular.setForeground(new java.awt.Color(0, 0, 0));
         btnCalcular.setText("Calcular");
         btnCalcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
 
         btnReset.setBackground(new java.awt.Color(255, 255, 255));
         btnReset.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -74,6 +82,7 @@ public class Window extends javax.swing.JFrame {
         inputA.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         inputA.setForeground(new java.awt.Color(0, 0, 0));
         inputA.setToolTipText("Kg");
+        inputA.setName("inputA"); // NOI18N
         inputA.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputAActionPerformed(evt);
@@ -87,6 +96,7 @@ public class Window extends javax.swing.JFrame {
         inputB.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         inputB.setForeground(new java.awt.Color(0, 0, 0));
         inputB.setToolTipText("Kg");
+        inputB.setName("inputB"); // NOI18N
         inputB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputBActionPerformed(evt);
@@ -100,6 +110,7 @@ public class Window extends javax.swing.JFrame {
         inputC.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         inputC.setForeground(new java.awt.Color(0, 0, 0));
         inputC.setToolTipText("Kg");
+        inputC.setName("inputC"); // NOI18N
         inputC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputCActionPerformed(evt);
@@ -114,6 +125,7 @@ public class Window extends javax.swing.JFrame {
         inputCorda.setForeground(new java.awt.Color(0, 0, 0));
         inputCorda.setText("100");
         inputCorda.setToolTipText("Kg");
+        inputCorda.setName("inputCorda"); // NOI18N
         inputCorda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputCordaActionPerformed(evt);
@@ -179,7 +191,7 @@ public class Window extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(237, 237, 237)
-                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(238, 238, 238))
             .addComponent(line)
             .addGroup(layout.createSequentialGroup()
@@ -310,6 +322,13 @@ public class Window extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_radioEsquerdaActionPerformed
 
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+        
+        JTextField[] inputs = {inputA, inputB, inputC, inputCorda};
+        verificarPreenchimento(inputs);
+        
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -370,4 +389,23 @@ public class Window extends javax.swing.JFrame {
     private javax.swing.JLabel txtCorda1;
     private javax.swing.JTextArea txtRes;
     // End of variables declaration//GEN-END:variables
+
+    private static void verificarPreenchimento(JTextField[] inputs) {
+        String txtInput;
+        String msg = "Preencha todos os campos!!!";
+        String titulo = "Erro!";
+        
+        for (JTextField input : inputs) {
+            txtInput = input.getText();
+            System.out.println("Input " + input.getName() + ": " + txtInput);
+            
+            if(txtInput.isEmpty()) {
+                System.out.println("Preencha todos os campos!!!");
+                
+                JOptionPane.showMessageDialog(null, msg, titulo, JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+    }
+
 }

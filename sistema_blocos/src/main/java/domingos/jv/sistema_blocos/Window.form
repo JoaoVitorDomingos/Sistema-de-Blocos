@@ -35,7 +35,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="237" max="-2" attributes="0"/>
-              <Component id="titulo" pref="370" max="32767" attributes="0"/>
+              <Component id="titulo" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="238" max="-2" attributes="0"/>
           </Group>
           <Component id="line" alignment="0" max="32767" attributes="0"/>
@@ -207,6 +207,9 @@
           <Color id="Hand Cursor"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCalcularActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnReset">
       <Properties>
@@ -251,6 +254,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Kg"/>
+        <Property name="name" type="java.lang.String" value="inputA" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputAActionPerformed"/>
@@ -276,6 +280,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Kg"/>
+        <Property name="name" type="java.lang.String" value="inputB" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputBActionPerformed"/>
@@ -301,6 +306,7 @@
           <Color blue="0" green="0" red="0" type="rgb"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value="Kg"/>
+        <Property name="name" type="java.lang.String" value="inputC" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCActionPerformed"/>
@@ -327,6 +333,7 @@
         </Property>
         <Property name="text" type="java.lang.String" value="100"/>
         <Property name="toolTipText" type="java.lang.String" value="Kg"/>
+        <Property name="name" type="java.lang.String" value="inputCorda" noResource="true"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputCordaActionPerformed"/>
