@@ -75,6 +75,11 @@ public class Window extends javax.swing.JFrame {
         btnReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReset.setMaximumSize(new java.awt.Dimension(105, 29));
         btnReset.setMinimumSize(new java.awt.Dimension(105, 29));
+        btnReset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetActionPerformed(evt);
+            }
+        });
 
         txtA.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         txtA.setText("Massa do Bloco A (Kg)");
@@ -359,10 +364,6 @@ public class Window extends javax.swing.JFrame {
             //System.out.println("Corda da Direita Cortada");
             respostas = calcular(massaA, massaB, radioDireita.getText());
         }
-        /*
-        for(int i = 0; i < 3; i++) {
-            System.out.println("Resposta " + (i+1) + ": " + respostas[i]);
-        } */
         
         // Verifica se a corda arrebenta ou não
         cordaArrebentou = isArrebentar(tracaoMax, tracaoEsq, tracaoDir);
@@ -373,6 +374,15 @@ public class Window extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // Volta ao padrão os inputs
+        inputA.setText("");
+        inputB.setText("");
+        inputC.setText("");
+        inputCorda.setText("100");
+        radioNone.setSelected(true);
+    }//GEN-LAST:event_btnResetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -516,7 +526,7 @@ public class Window extends javax.swing.JFrame {
         return respostas;
     }
     
-    // Realiza os calculos quando corta a corda de esquerda
+    // Realiza os calculos quando é cortado uma das cordas
     private static Double[] calcular(double massaPendurado, double outraMassa, String cordaCortada) {
         
         Double[] respostas = new Double[3];
