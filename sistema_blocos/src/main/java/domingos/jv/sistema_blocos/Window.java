@@ -18,26 +18,297 @@ public class Window extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        radioGroupCorda = new javax.swing.ButtonGroup();
+        titulo = new javax.swing.JLabel();
+        img = new javax.swing.JLabel();
+        btnCalcular = new javax.swing.JButton();
+        btnReset = new javax.swing.JButton();
+        txtA = new javax.swing.JLabel();
+        inputA = new javax.swing.JTextField();
+        txtB = new javax.swing.JLabel();
+        inputB = new javax.swing.JTextField();
+        txtC = new javax.swing.JLabel();
+        inputC = new javax.swing.JTextField();
+        txtCorda = new javax.swing.JLabel();
+        inputCorda = new javax.swing.JTextField();
+        txtCorda1 = new javax.swing.JLabel();
+        radioNone = new javax.swing.JRadioButton();
+        radioEsquerda = new javax.swing.JRadioButton();
+        radioDireita = new javax.swing.JRadioButton();
+        line = new javax.swing.JSeparator();
+        tituloRes = new javax.swing.JLabel();
+        tituloDiagrama = new javax.swing.JLabel();
+        containerDiagrama = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtRes = new javax.swing.JTextArea();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Blocos");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setName("window"); // NOI18N
         setResizable(false);
 
+        titulo.setFont(new java.awt.Font("Arial", 1, 36)); // NOI18N
+        titulo.setText("Sistema de Blocos");
+
+        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/imagem_exercicio.jpg"))); // NOI18N
+
+        btnCalcular.setBackground(new java.awt.Color(255, 255, 255));
+        btnCalcular.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(0, 0, 0));
+        btnCalcular.setText("Calcular");
+        btnCalcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnReset.setBackground(new java.awt.Color(255, 255, 255));
+        btnReset.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        btnReset.setForeground(new java.awt.Color(0, 0, 0));
+        btnReset.setText("Resetar");
+        btnReset.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReset.setMaximumSize(new java.awt.Dimension(105, 29));
+        btnReset.setMinimumSize(new java.awt.Dimension(105, 29));
+
+        txtA.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtA.setText("Massa do Bloco A (Kg)");
+
+        inputA.setBackground(new java.awt.Color(255, 255, 255));
+        inputA.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        inputA.setForeground(new java.awt.Color(0, 0, 0));
+        inputA.setToolTipText("Kg");
+        inputA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputAActionPerformed(evt);
+            }
+        });
+
+        txtB.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtB.setText("Massa do Bloco B (Kg)");
+
+        inputB.setBackground(new java.awt.Color(255, 255, 255));
+        inputB.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        inputB.setForeground(new java.awt.Color(0, 0, 0));
+        inputB.setToolTipText("Kg");
+        inputB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputBActionPerformed(evt);
+            }
+        });
+
+        txtC.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtC.setText("Massa do Bloco C (Kg)");
+
+        inputC.setBackground(new java.awt.Color(255, 255, 255));
+        inputC.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        inputC.setForeground(new java.awt.Color(0, 0, 0));
+        inputC.setToolTipText("Kg");
+        inputC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCActionPerformed(evt);
+            }
+        });
+
+        txtCorda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtCorda.setText("Tensão Máxima da Corda (N)");
+
+        inputCorda.setBackground(new java.awt.Color(255, 255, 255));
+        inputCorda.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        inputCorda.setForeground(new java.awt.Color(0, 0, 0));
+        inputCorda.setText("100");
+        inputCorda.setToolTipText("Kg");
+        inputCorda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputCordaActionPerformed(evt);
+            }
+        });
+
+        txtCorda1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        txtCorda1.setText("Cortar Corda:");
+
+        radioGroupCorda.add(radioNone);
+        radioNone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        radioNone.setSelected(true);
+        radioNone.setText("Não");
+
+        radioGroupCorda.add(radioEsquerda);
+        radioEsquerda.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        radioEsquerda.setText("Esquerda");
+        radioEsquerda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioEsquerdaActionPerformed(evt);
+            }
+        });
+
+        radioGroupCorda.add(radioDireita);
+        radioDireita.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        radioDireita.setText("Direita");
+
+        tituloRes.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        tituloRes.setText("Resultado");
+
+        tituloDiagrama.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        tituloDiagrama.setForeground(new java.awt.Color(0, 0, 0));
+        tituloDiagrama.setText("Diagrama de Corpos Livres");
+
+        containerDiagrama.setBackground(new java.awt.Color(255, 255, 255));
+        containerDiagrama.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+
+        javax.swing.GroupLayout containerDiagramaLayout = new javax.swing.GroupLayout(containerDiagrama);
+        containerDiagrama.setLayout(containerDiagramaLayout);
+        containerDiagramaLayout.setHorizontalGroup(
+            containerDiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        containerDiagramaLayout.setVerticalGroup(
+            containerDiagramaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 181, Short.MAX_VALUE)
+        );
+
+        txtRes.setEditable(false);
+        txtRes.setBackground(new java.awt.Color(255, 255, 255));
+        txtRes.setColumns(20);
+        txtRes.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        txtRes.setForeground(new java.awt.Color(0, 0, 0));
+        txtRes.setLineWrap(true);
+        txtRes.setRows(5);
+        txtRes.setText("O resultado virá aqui");
+        txtRes.setFocusable(false);
+        jScrollPane1.setViewportView(txtRes);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(237, 237, 237)
+                .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
+                .addGap(238, 238, 238))
+            .addComponent(line)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(18, 18, 18)
+                        .addComponent(containerDiagrama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(tituloRes)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(tituloDiagrama)
+                        .addGap(104, 104, 104))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtCorda)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(inputCorda))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtC)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(inputC))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtB)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(inputB))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtA)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(inputA, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtCorda1)
+                                .addGap(18, 18, 18)
+                                .addComponent(radioNone, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioEsquerda)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(radioDireita)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(42, 42, 42)
+                                .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(img)
+                                .addGap(14, 14, 14)))
+                        .addGap(87, 87, 87))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(titulo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtA)
+                            .addComponent(inputA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtB)
+                            .addComponent(inputB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtC)
+                            .addComponent(inputC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(32, 32, 32))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(img)
+                        .addGap(12, 12, 12)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCorda)
+                    .addComponent(inputCorda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCorda1)
+                            .addComponent(radioNone)
+                            .addComponent(radioEsquerda)
+                            .addComponent(radioDireita)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(46, 46, 46)
+                .addComponent(line, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tituloRes)
+                    .addComponent(tituloDiagrama))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(containerDiagrama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
+                .addGap(13, 13, 13))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void inputAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputAActionPerformed
+
+    private void inputBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputBActionPerformed
+
+    private void inputCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCActionPerformed
+
+    private void inputCordaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputCordaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputCordaActionPerformed
+
+    private void radioEsquerdaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEsquerdaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radioEsquerdaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -75,5 +346,28 @@ public class Window extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnReset;
+    private javax.swing.JPanel containerDiagrama;
+    private javax.swing.JLabel img;
+    private javax.swing.JTextField inputA;
+    private javax.swing.JTextField inputB;
+    private javax.swing.JTextField inputC;
+    private javax.swing.JTextField inputCorda;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator line;
+    private javax.swing.JRadioButton radioDireita;
+    private javax.swing.JRadioButton radioEsquerda;
+    private javax.swing.ButtonGroup radioGroupCorda;
+    private javax.swing.JRadioButton radioNone;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel tituloDiagrama;
+    private javax.swing.JLabel tituloRes;
+    private javax.swing.JLabel txtA;
+    private javax.swing.JLabel txtB;
+    private javax.swing.JLabel txtC;
+    private javax.swing.JLabel txtCorda;
+    private javax.swing.JLabel txtCorda1;
+    private javax.swing.JTextArea txtRes;
     // End of variables declaration//GEN-END:variables
 }
