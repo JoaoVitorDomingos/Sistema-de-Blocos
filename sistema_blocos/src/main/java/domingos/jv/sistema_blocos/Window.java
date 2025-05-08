@@ -187,7 +187,7 @@ public class Window extends javax.swing.JFrame {
         txtRes.setForeground(new java.awt.Color(0, 0, 0));
         txtRes.setLineWrap(true);
         txtRes.setRows(5);
-        txtRes.setText("O resultado virá aqui");
+        txtRes.setText("O resultado virá aqui!");
         txtRes.setFocusable(false);
         jScrollPane1.setViewportView(txtRes);
 
@@ -527,10 +527,10 @@ public class Window extends javax.swing.JFrame {
     private static Double[] calcular(double massaPendurado, double outraMassa, String cordaCortada) {
         
         Double[] respostas = new Double[3];
-        System.out.println("Funcao: " + cordaCortada);
+        //System.out.println("Funcao: " + cordaCortada);
         
         if(cordaCortada == "Esquerda") {
-            System.out.println("Entrou esqeurda");
+            //System.out.println("Entrou esqeurda");
             aceleracao = (massaPendurado * gravidade) / (outraMassa + massaPendurado);
             respostas[0] = aceleracao;
 
@@ -542,7 +542,7 @@ public class Window extends javax.swing.JFrame {
             return respostas;
             
         } else{
-            System.out.println("Entrou direita");
+            //System.out.println("Entrou direita");
             aceleracao = (massaPendurado * gravidade) / (outraMassa + massaPendurado);
             respostas[0] = -aceleracao;
             
@@ -570,7 +570,7 @@ public class Window extends javax.swing.JFrame {
     private static void mostrarRes(JTextArea txtArea, Double[] respostas, boolean estorouCorda) {
         txtArea.setText("");
         
-        String res = "Aceleração: " + String.format("%.2f", respostas[0]) + "m/s^2" + 
+        String res = "Aceleração: " + String.format("%.2f", respostas[0]) + " (m/s^2)" + 
                      "\nTração da corda da Esquerda: " + String.format("%.2f", respostas[1]) + "N" + 
                      "\nTração da corda da Direita: " + String.format("%.2f", respostas[2]) + "N";
         
