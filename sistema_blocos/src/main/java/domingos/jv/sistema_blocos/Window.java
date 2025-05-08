@@ -378,6 +378,7 @@ public class Window extends javax.swing.JFrame {
         inputC.setText("");
         inputCorda.setText("100");
         radioNone.setSelected(true);
+        txtRes.setText("A resposta virá aqui!");
     }//GEN-LAST:event_btnResetActionPerformed
 
     /**
