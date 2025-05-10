@@ -2,6 +2,7 @@ package domingos.jv.sistema_blocos;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
@@ -46,10 +47,15 @@ public class DiagramaCorposLivres extends JPanel {
         
         // Desenha o contorno do bloco
         g2.setColor(Color.BLACK);
+        g2.setStroke(new BasicStroke(1));
         g2.drawRect(x, 74, 50, 50);
         
         // Adiciona o nome do bloco
-        g2.drawString(label, x+23, 101);
+        if(cor.equals(Color.BLUE)) g2.setColor(Color.WHITE);
+        g2.setFont(new Font("Arial", Font.BOLD, 14));
+        g2.drawString(label, x+21, 104);
+        
+        g2.setFont(new Font("Arial", Font.PLAIN, 12));
         
         // Chama o metodo de desenhar setas
         if(label == "B") {
