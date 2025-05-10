@@ -343,6 +343,7 @@ public class Window extends javax.swing.JFrame {
         double massaC = Double.parseDouble(inputC.getText());
         double tracaoMax = Double.parseDouble(inputCorda.getText());
         boolean cordaArrebentou;
+        String cordaCortada = "";
         
         Double[] respostas = new Double[3];
         
@@ -351,16 +352,19 @@ public class Window extends javax.swing.JFrame {
             // Faz o calculo para 3 blocos
             //System.out.println("Corda nao cortada");
             respostas = calcular(massaA, massaB, massaC);
+            cordaCortada = radioNone.getText();
             
         } else if(radioEsquerda.isSelected()) {
             // Realiza o calculo para quando a corda da esquerda esta cortada
             //System.out.println("Corda da Esquerda Cortada");
             respostas = calcular(massaC, massaB, radioEsquerda.getText());
+            cordaCortada = radioEsquerda.getText();
             
         } else if(radioDireita.isSelected()) {
             // Realiza o calculo para quando a corda da direita esta cortada
             //System.out.println("Corda da Direita Cortada");
             respostas = calcular(massaA, massaB, radioDireita.getText());
+            cordaCortada = radioDireita.getText();
         }
         
         // Verifica se a corda arrebenta ou não
@@ -370,7 +374,7 @@ public class Window extends javax.swing.JFrame {
         mostrarRes(txtRes, respostas, cordaArrebentou);
         
         // Desenha o diagrama de corpos livres
-        painelDiagrama.setDados(aceleracao);
+        painelDiagrama.setDados(respostas[0], cordaCortada);
         painelDiagrama.mostrarDiagrama(true);
         
     }//GEN-LAST:event_btnCalcularActionPerformed

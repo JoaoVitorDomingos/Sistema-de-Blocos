@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 public class DiagramaCorposLivres extends JPanel {
     private boolean mostrarDiagrama = false;
     private double aceleracao;
+    private String cordaCortada;
 
     // Irá mostrar o diagrama de corpos livres no painel
     public void mostrarDiagrama(boolean isMostrar) {
@@ -18,29 +19,30 @@ public class DiagramaCorposLivres extends JPanel {
     }
     
     // Irá pegar as massas
-    public void setDados(double aceleracao) {
+    public void setDados(double aceleracao, String cordaCortada) {
         this.aceleracao = aceleracao;
+        this.cordaCortada = cordaCortada;
     }
     
     
     @Override
     protected void paintComponent(Graphics g) {
         // Configuração para o paintComponent
-        super.paintComponent(g);
+        super.paintComponent(g); // limpa painel
         if(!mostrarDiagrama) return;
         
         Graphics2D g2 = (Graphics2D) g;
         
         // Desenha os blocos e suas forças
         // Bloco A: x - 50, y - 74
-        desenharBlocoForcas(g2, 50, "A", Color.GREEN);
+        desenharBlocoForcas(g2, 50, "A", Color.GREEN, cordaCortada);
         // Bloco B: x - 185, y - 74
-        desenharBlocoForcas(g2, 185, "B", Color.BLUE);
+        desenharBlocoForcas(g2, 185, "B", Color.BLUE, cordaCortada);
         // Bloco C: x - 320, y - 74
-        desenharBlocoForcas(g2, 320, "C", Color.YELLOW);
+        desenharBlocoForcas(g2, 320, "C", Color.YELLOW, cordaCortada);
     }
     
-    private void desenharBlocoForcas(Graphics2D g2, int x, String label, Color cor) {
+    private void desenharBlocoForcas(Graphics2D g2, int x, String label, Color cor, String cordaCortada) {
         // Desenha o bloco
         g2.setColor(cor);
         g2.fillRect(x, 74, 50, 50);
@@ -68,12 +70,16 @@ public class DiagramaCorposLivres extends JPanel {
             g2.drawString("P", x+40, 150);
             
             // Tração da Esquerda
-            desenharSeta(g2, x, x-40, 99, 99, Color.DARK_GRAY);
-            g2.drawString("Te", x-25, 90);
+            if(cordaCortada != "Esquerda") {
+                desenharSeta(g2, x, x-40, 99, 99, Color.DARK_GRAY);
+                g2.drawString("Te", x-25, 90);
+            }
             
             // Tração da Direita
-            desenharSeta(g2, x+50, x+90, 99, 99, Color.GRAY);
-            g2.drawString("Td", x+60, 90);
+            if(cordaCortada != "Direita") {
+                desenharSeta(g2, x+50, x+90, 99, 99, Color.GRAY);
+                g2.drawString("Td", x+60, 90);
+            }
             
             // Aceleração
             int aceX1 = 0, aceX2 = 0;
@@ -102,34 +108,48 @@ public class DiagramaCorposLivres extends JPanel {
                 aceY1 = 114;
                 aceY2 = 64;
             }
-            
+
             // Identifica qual tração é
             String labelTracao;
             Color corT;
             if(label == "A") {
                 labelTracao = "Te";
                 corT = Color.DARK_GRAY;
-                
+
                 // Desenha aceleracao
-                if(aceleracao != 0) {
+                if(aceleracao != 0 && cordaCortada != "Esquerda") {
                     desenharSeta(g2, x/2, x/2, aceY1, aceY2, Color.MAGENTA);
                     g2.drawString("a", x/2-15, 99);
+                } else if(aceleracao != 0 && cordaCortada == "Esquerda") {
+                    desenharSeta(g2, x/2, x/2, 64, 114, Color.MAGENTA);
+                    g2.drawString("a", x/2-15, 99);
                 }
-                
+
+                // Tração
+                if(cordaCortada != "Esquerda") {
+                    desenharSeta(g2, x+25, x+25, 74, 44, corT);
+                    g2.drawString(labelTracao, x+40, 50);
+                }
+
             } else {
                 labelTracao = "Td";
                 corT = Color.GRAY;
-                
+
                 // Desenha aceleracao
-                if(aceleracao != 0) {
+                if(aceleracao != 0 && cordaCortada != "Direita") {
                     desenharSeta(g2, x+75, x+75, aceY2, aceY1, Color.MAGENTA);
                     g2.drawString("a", x+85, 99);
+                } else if(aceleracao != 0 && cordaCortada == "Direita") {
+                    desenharSeta(g2, x+75, x+75, 64, 114, Color.MAGENTA);
+                    g2.drawString("a", x+85, 99);
+                }
+
+                // Tração
+                if(cordaCortada != "Direita") {
+                    desenharSeta(g2, x+25, x+25, 74, 44, corT);
+                    g2.drawString(labelTracao, x+40, 50);
                 }
             }
-
-            // Tração
-            desenharSeta(g2, x+25, x+25, 74, 44, corT);
-            g2.drawString(labelTracao, x+40, 50);
             
             // Força Peso
             desenharSeta(g2, x+25, x+25, 124, 164, Color.ORANGE);
