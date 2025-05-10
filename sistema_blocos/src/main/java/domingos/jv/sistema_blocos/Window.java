@@ -11,6 +11,7 @@ public class Window extends javax.swing.JFrame {
      */
     public Window() {
         initComponents();
+        painelDiagrama = (DiagramaCorposLivres) containerDiagrama;
     }
 
     /**
@@ -42,7 +43,7 @@ public class Window extends javax.swing.JFrame {
         line = new javax.swing.JSeparator();
         tituloRes = new javax.swing.JLabel();
         tituloDiagrama = new javax.swing.JLabel();
-        containerDiagrama = new javax.swing.JPanel();
+        containerDiagrama = new DiagramaCorposLivres();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtRes = new javax.swing.JTextArea();
 
@@ -168,6 +169,7 @@ public class Window extends javax.swing.JFrame {
 
         containerDiagrama.setBackground(new java.awt.Color(255, 255, 255));
         containerDiagrama.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204)));
+        containerDiagrama.setName("containerDiagrama"); // NOI18N
 
         javax.swing.GroupLayout containerDiagramaLayout = new javax.swing.GroupLayout(containerDiagrama);
         containerDiagrama.setLayout(containerDiagramaLayout);
@@ -296,7 +298,7 @@ public class Window extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(containerDiagrama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
                 .addGap(13, 13, 13))
         );
 
@@ -367,7 +369,9 @@ public class Window extends javax.swing.JFrame {
         // Mostra os resultados no TextArea
         mostrarRes(txtRes, respostas, cordaArrebentou);
         
-        
+        // Desenha o diagrama de corpos livres
+        painelDiagrama.setDados(aceleracao);
+        painelDiagrama.mostrarDiagrama(true);
         
     }//GEN-LAST:event_btnCalcularActionPerformed
 
@@ -379,6 +383,7 @@ public class Window extends javax.swing.JFrame {
         inputCorda.setText("100");
         radioNone.setSelected(true);
         txtRes.setText("A resposta virá aqui!");
+        painelDiagrama.mostrarDiagrama(false);
     }//GEN-LAST:event_btnResetActionPerformed
 
     /**
@@ -447,6 +452,9 @@ public class Window extends javax.swing.JFrame {
     private static double aceleracao;
     private static double tracaoEsq;
     private static double tracaoDir;
+    
+    // Declaracao do container para desenho dos corpos livres
+    private DiagramaCorposLivres painelDiagrama;
     
     // Verifica se os inputs estão preenchidos
     private static boolean isPreenchido(JTextField[] inputs) {
