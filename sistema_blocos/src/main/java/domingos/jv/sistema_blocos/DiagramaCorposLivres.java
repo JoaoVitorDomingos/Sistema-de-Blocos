@@ -149,12 +149,17 @@ public class DiagramaCorposLivres extends JPanel {
         // Desenha a cabeça da seta
         int dx = x2 - x1;
         int dy = y2 - y1;
-        double d = Math.sqrt(dx * dx + dy * dy);
-        double xm = x2 - dx * 10 / d;
-        double ym = y2 - dy * 10 / d;
+        double angle = Math.atan2(dy, dx);
         
-        int[] xPoints = {x2, (int)(xm + dy * 0.3), (int)(xm - dy * 0.3)};
-        int[] yPoints = {y2, (int)(ym - dx * 0.3), (int)(ym - dx * 0.3)};
-        g2.fillPolygon(xPoints, yPoints, 3);
+        int larguraCabeca = 7;
+        
+        int xArrow1 = (int) (x2 - larguraCabeca * Math.cos(angle - Math.PI / 6));
+        int yArrow1 = (int) (y2 - larguraCabeca * Math.sin(angle - Math.PI / 6));
+
+        int xArrow2 = (int) (x2 - larguraCabeca * Math.cos(angle + Math.PI / 6));
+        int yArrow2 = (int) (y2 - larguraCabeca * Math.sin(angle + Math.PI / 6));
+        
+        g2.drawLine(x2, y2, xArrow1, yArrow1);
+        g2.drawLine(x2, y2, xArrow2, yArrow2);
     }
 }
