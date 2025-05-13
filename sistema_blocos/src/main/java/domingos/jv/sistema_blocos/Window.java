@@ -587,7 +587,7 @@ public class Window extends javax.swing.JFrame {
                      "\nTração da corda da Direita: " + String.format("%.2f", respostas[2]) + "N";
         
         if(estorouCorda)
-            res += "\nA corda irá arrebentar! A tração superou a tensão máxima.";
+            res += "\nA corda irá arrebentar! A tração superou o limite da tensão.";
         
         
         txtArea.setText(res);
