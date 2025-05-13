@@ -500,9 +500,17 @@ public class Window extends javax.swing.JFrame {
                     return false;
                 }
                 
-                if(input.getName() == "inputCorda" && dado < 10) {
+                if((input.getName() == "inputA" || input.getName() == "inputB" 
+                        || input.getName() == "inputC") && dado > 200) {
+                    String msgMassa = "O valor máximo das massas é 200Kg.";
+                    String tituloCorda = "Valor inválido da Massa";
+                    JOptionPane.showMessageDialog(null, msgMassa, tituloCorda, JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
+                if(input.getName() == "inputCorda" && (dado < 10 || dado > 500)) {
                     //System.out.println("Numero invalido da corda");
-                    String msgCorda = "O valor minimo da tensão máxima da corda é 10N";
+                    String msgCorda = "O valor minimo da tensão máxima da corda é 10N e o máximo 500N";
                     String tituloCorda = "Valor inválido da Corda";
                     JOptionPane.showMessageDialog(null, msgCorda, tituloCorda, JOptionPane.ERROR_MESSAGE);
                     return false;
