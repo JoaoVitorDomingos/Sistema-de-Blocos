@@ -18,12 +18,16 @@
 <br>
 
 <h2 id="sobre">📌 Sobre</h2>
-Um <ins>projeto da faculdade</ins> da matéria de física, no qual foi realizado um programa em <strong>Java</strong> que calcula um exercício de física. O exercício escolhido é um sistema com 3 blocos, no qual os blocos estão ligados por uma corda e calcula a aceleração, a tração e mostra um diagrama de corpos livres.
+<p>Um <ins>projeto da faculdade</ins> da matéria de física, no qual foi realizado um programa em <strong>Java</strong> que calcula um exercício de física. O exercício escolhido é um sistema com 3 blocos, no qual os blocos estão ligados por uma corda e calcula a aceleração, a tração e mostra um diagrama de corpos livres.</p>
 
 <br>
 <br>
 
-<h2 id="acesso">🚀 Acesse o Projeto</h2>
+<h2 id="acesso">🚀 Instalação</h2>
+<h3>Requisitos</h3>
+<p>É necessário ter o <ins>JDK 24</ins> instalado em sua máquina para poder rodar o projeto, <a href="https://download.oracle.com/java/24/latest/jdk-24_windows-x64_bin.exe">baixe aqui</a></p>
+<h3>Execute o Programa</h3>
+<p>Baixe o executável do programa <CODE>(.jar)</CODE> <a href="https://github.com/JoaoVitorDomingos/Sistema-de-Blocos/releases/tag/1.0.0">aqui</a>. E com dois cliques, execute-o.</p>
 
 
 <br>
